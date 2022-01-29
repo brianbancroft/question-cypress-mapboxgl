@@ -8,8 +8,9 @@ const styles = {
   position: "absolute",
 };
 
-const MapboxGLMap = () => {
+const MapboxGLMap = ({ incrementPanCount, incrementMouseMoveCount }) => {
   const [map, setMap] = useState(null);
+
   const mapContainer = useRef(null);
 
   useEffect(() => {
@@ -44,12 +45,19 @@ const MapboxGLMap = () => {
           .setHTML(`<p>hello double click event</p>`)
           .addTo(map);
       });
+
+      map.on("drag", incrementPanCount);
+      map.on("mousemove", incrementMouseMoveCount);
     };
 
     if (!map) initializeMap({ setMap, mapContainer });
   }, [map]);
 
-  return <div ref={(el) => (mapContainer.current = el)} style={styles} />;
+  return (
+    <>
+      <div ref={(el) => (mapContainer.current = el)} style={styles} />
+    </>
+  );
 };
 
 export default MapboxGLMap;
