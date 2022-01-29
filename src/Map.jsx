@@ -55,7 +55,7 @@ const MapboxGLMap = ({ incrementPanCount, incrementMouseMoveCount }) => {
 
   return (
     <>
-      <div ref={(el) => (mapContainer.current = el)} style={styles} />
+      <div id="demo" ref={(el) => (mapContainer.current = el)} style={styles} />
     </>
   );
 };
