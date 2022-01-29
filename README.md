@@ -1,6 +1,17 @@
-## How to trigger click and double click events in Mapbox GL
+## Testing and triggering various mapbox gl events in cypress
 
 https://cypress-mapboxgl-click-event.netlify.app/
+
+This repo experiments with mapbox interactions in a cypress environment. Created because I have yet to get a working solution to simulating a map pan in mapbox gl
+
+# What Works, what Doesn't?
+
+This is not an authoritative list.
+
+- [x] click
+- [x] double click
+- [x] mouse move
+- [] _pan_
 
 ## Site Status
 

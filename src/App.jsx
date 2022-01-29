@@ -18,7 +18,17 @@ function App() {
   return (
     <main>
       <header>
-        <h1>simple map</h1>
+        <h1>Cypress Troubleshooting Playground.</h1>
+        <p>
+          Repo:{" "}
+          <a
+            href="https://github.com/brianbancroft/question-cypress-mapboxgl"
+            target="_blank"
+            rel="noopener"
+          >
+            https://github.com/brianbancroft/question-cypress-mapboxgl
+          </a>
+        </p>
         <p>
           did map pan? <span id="panCheck">{mapPan ? "yes" : "no"}</span>
         </p>
