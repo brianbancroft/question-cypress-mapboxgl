@@ -26,6 +26,15 @@ const MapboxGLMap = () => {
         setMap(map);
         map.resize();
       });
+
+      map.on("click", (e) => {
+        const { lngLat } = e;
+
+        new mapboxgl.Popup()
+          .setLngLat(lngLat)
+          .setHTML(`<p>hello click event</p>`)
+          .addTo(map);
+      });
     };
 
     if (!map) initializeMap({ setMap, mapContainer });
