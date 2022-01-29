@@ -1,11 +1,26 @@
-describe("simple map example", () => {
+describe("Working map actions", () => {
   beforeEach(() => {
     cy.visit("https://cypress-mapboxgl-click-event.netlify.app/");
   });
 
-  describe("using map canvas class", () => {
-    // Works fine
-    it("detects mouse action", () => {
+  describe("on map click", () => {
+    it("displays a popup", () => {
+      cy.get("canvas.mapboxgl-canvas").trigger("click", 500, 300);
+
+      cy.findByText(/hello click event/).should("exist");
+    });
+  });
+
+  describe("On double map click", () => {
+    it("displays a different popup", () => {
+      cy.get("canvas.mapboxgl-canvas").trigger("dblclick", 500, 300);
+
+      cy.findByText(/hello double click event/).should("exist");
+    });
+  });
+
+  describe("on mouse move over canvas", () => {
+    it("triggers mousemove event in map", () => {
       cy.get("canvas.mapboxgl-canvas").trigger("mousemove", {
         x: 320,
         y: 250,
@@ -37,25 +52,6 @@ describe("simple map example", () => {
       });
 
       cy.get("#mouseMoveCheck").contains("yes");
-    });
-
-    // Does not work
-    it("has working pan actions", () => {
-      cy.window().then((win) => {
-        cy.get("canvas.mapboxgl-canvas")
-          .trigger("mouseDown", {
-            position: "center",
-            view: win,
-          })
-          .trigger("mousemove", 200, 200, {
-            force: true,
-          })
-          .trigger("mouseup", 200, 200, {
-            force: true,
-            view: win,
-          });
-        cy.get("#panCheck").contains("yes");
-      });
     });
   });
 });
