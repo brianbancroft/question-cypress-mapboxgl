@@ -35,6 +35,15 @@ const MapboxGLMap = () => {
           .setHTML(`<p>hello click event</p>`)
           .addTo(map);
       });
+
+      map.on("dblclick", (e) => {
+        const { lngLat } = e;
+
+        new mapboxgl.Popup()
+          .setLngLat(lngLat)
+          .setHTML(`<p>hello double click event</p>`)
+          .addTo(map);
+      });
     };
 
     if (!map) initializeMap({ setMap, mapContainer });
